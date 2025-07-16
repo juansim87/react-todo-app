@@ -3,34 +3,29 @@ import "./TodoForm.css";
 
 const INITIAL_FORM_STATE = { todoText: "" };
 
-
-
-export const TodoForm = () => {
+export const TodoForm = ({ addTodo }) => {
   const [form, setForm] = useState(INITIAL_FORM_STATE);
 
   const onFormSubmit = (event) => {
     event.preventDefault();
 
     if (!form.todoText) {
-        console.log("Rellena el campo de texto!");
-        return;
+      console.log("Rellena el campo de texto!");
+      return;
     }
-    
+
     const newTodo = {
-    text: form.todoText,
-    completed: false,
-    favorite: false,
-    id: Date.now(),
-    done: false
-};
+      text: form.todoText,
+      completed: false,
+      favorite: false,
+      id: Date.now(),
+      done: false,
+    };
 
-console.log("Formulario enviado", newTodo);
-
-
-
+    console.log("Formulario enviado", newTodo);
+    addTodo(newTodo);
     setForm(INITIAL_FORM_STATE);
-
-  }
+  };
 
   const onInputChange = ({ target: { name, value } }) => {
     return setForm((prev) => ({ ...prev, [name]: value }));
@@ -49,7 +44,9 @@ console.log("Formulario enviado", newTodo);
             value={form.todoText}
             onChange={onInputChange}
           />
-          <button type="submit" className="add-btn" >Añadir</button>
+          <button type="submit" className="add-btn">
+            Añadir
+          </button>
         </form>
       </div>
     </>
