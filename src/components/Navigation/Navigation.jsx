@@ -10,8 +10,8 @@ export const Navigation = ({ activeTab, setActiveTab }) => {
         return (
           <button
             key={property}
-            className={`tab ${activeTab ===  property ? "active" : ""}`}
-            onClick={() => setActiveTab(property)}
+            className={`tab ${activeTab ===  value ? "active" : ""}`}
+            onClick={() => setActiveTab(value)}
           >
             {value}
           </button>
