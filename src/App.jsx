@@ -12,7 +12,7 @@ export const App = () => {
 
   const addTodo = (newTodo) => {
     setTodos((prev) => [...prev, newTodo]);
-  }
+  };
 
   return (
     <div className="app-container">
@@ -20,7 +20,7 @@ export const App = () => {
       <h1 className="app-title">📝Mi Lista de tareas</h1>
       {activeTab === Tabs.TODOS && <h2>Pestaña: Todos</h2>}
       {activeTab === Tabs.FAVORITES && <h2>Pestaña: Favoritos</h2>}
-      {activeTab === Tabs.NEW_TODO && <TodoForm addTodo={addTodo}/>}
+      {activeTab === Tabs.NEW_TODO && <TodoForm addTodo={addTodo} />}
     </div>
   );
 };
