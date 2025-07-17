@@ -1,16 +1,21 @@
 // import { useState } from "react";
 import "./Favorites.css";
-import { TodoItem } from "../TodoItem/TodoItem.jsx"
+import { TodoItem } from "../TodoItem/TodoItem.jsx";
 
-export const Favorites = ({ todos, onToggleTodo, onToggleFavorite, onDeleteTodo }) => {
+export const Favorites = ({
+  todos,
+  onToggleTodo,
+  onToggleFavorite,
+  onDeleteTodo,
+}) => {
   const favorites = todos.filter((todo) => todo.favorite);
 
-console.log("Favoritos:", favorites);
+  console.log("Favoritos:", favorites);
 
   return (
     <div className="favorites-container">
       <h2 className="favorites-title">⭐ Favoritos</h2>
-      {!favorites?.length === 0 && (
+      {favorites?.length === 0 && (
         <p className="favorites-empty">No hay favoritas que mostrar</p>
       )}
       {favorites.length > 0 && (
