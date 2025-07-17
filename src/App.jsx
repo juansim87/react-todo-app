@@ -9,20 +9,20 @@ const INITIAL_TAB = Object.keys(Tabs)[0];
 
 const INITIAL_TODOS = [
   {
-    "text": "Pasear al perro",
-    "completed": false,
-    "favorite": false,
-    "id": 1752742413863,
-    "done": false
+    text: "Pasear al perro",
+    completed: false,
+    favorite: false,
+    id: 1752742413863,
+    done: false,
   },
   {
-    "text": "Organizar partida de rol",
-    "completed": false,
-    "favorite": false,
-    "id": 1752742454470,
-    "done": false
-  }
-]
+    text: "Organizar partida de rol",
+    completed: false,
+    favorite: false,
+    id: 1752742454470,
+    done: false,
+  },
+];
 
 export const App = () => {
   const [activeTab, setActiveTab] = useState(INITIAL_TAB);
@@ -32,12 +32,20 @@ export const App = () => {
     setTodos((prev) => [...prev, newTodo]);
   };
 
+  const toggleTodo = (id) => {
+    const updatedTodos = todos.map((todo) => {
+      return todo.id === id ? { ...todo, done: !todo.done } : todo;
+    });
+
+    setTodos(updatedTodos);
+  };
+
   return (
     <div className="app-container">
       <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
       <h1 className="app-title">📝Mi Lista de tareas</h1>
 
-      {activeTab === Tabs.TODOS && <TodoList todos={todos}/>}
+      {activeTab === Tabs.TODOS && <TodoList toggleTodo={toggleTodo} todos={todos} />}
 
       {activeTab === Tabs.FAVORITES && <h2>Pestaña: Favoritos</h2>}
 

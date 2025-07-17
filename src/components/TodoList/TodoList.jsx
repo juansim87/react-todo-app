@@ -1,4 +1,5 @@
 // import { useState } from 'react';
+import { TodoItem } from "../TodoItem/TodoItem";
 import "./TodoList.css";
 
 export const TodoList = (props) => {
@@ -10,7 +11,10 @@ export const TodoList = (props) => {
         <p className="todo-list-empty">No hay tareas que mostrar</p>
       )}
       {props?.todos?.map((todo) => {
-        return <div className="todo" key={todo.id}>{todo.text}</div>;
+        return <TodoItem
+        key={todo.id}
+        toggleTodo={props.toggleTodo}
+        todo={todo} />
       })}
     </div>
   );

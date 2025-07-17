@@ -1,11 +1,13 @@
-import { useState } from 'react';
-import './TodoItem.css';
+// import { useState } from "react";
+import "./TodoItem.css";
 
-export const TodoItem = () => {
-
+export const TodoItem = ({ todo, toggleTodo }) => {
   return (
     <div>
-      <div className='todo-item'></div>
+      <div className={`todo-item ${todo.done ? "done" : ""}`} onClick={() =>  toggleTodo(todo.id)}>
+        <span className="todo-text">{todo.text}</span>
+        <div className="todo-actions"></div>
+      </div>
     </div>
   );
 };
