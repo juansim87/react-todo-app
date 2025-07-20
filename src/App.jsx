@@ -5,32 +5,23 @@ import { Tabs } from "./components/Navigation/Tabs";
 import { TodoForm } from "./components/TodoForm/TodoForm";
 import { TodoList } from "./components/TodoList/TodoList";
 import { Favorites } from "./components/Favorites/Favorites";
+import { storage } from "./helpers/storage";
 
-const INITIAL_TAB = Object.keys(Tabs)[0];
+const STORAGE_TODOS_KEY = "todos";
 
-const INITIAL_TODOS = [
-  {
-    text: "Pasear al perro",
-    completed: false,
-    favorite: false,
-    id: 1752742413863,
-    done: false,
-  },
-  {
-    text: "Organizar partida de rol",
-    completed: false,
-    favorite: false,
-    id: 1752742454470,
-    done: false,
-  },
-];
+const INITIAL_TODOS = storage.get(STORAGE_TODOS_KEY);
 
 export const App = () => {
-  const [activeTab, setActiveTab] = useState(INITIAL_TAB);
-  const [todos, setTodos] = useState(INITIAL_TODOS);
+  const [activeTab, setActiveTab] = useState(Tabs.TODOS);
+  const [todos, setTodos] = useState(INITIAL_TODOS || []);
 
   const addTodo = (newTodo) => {
-    setTodos((prev) => [...prev, newTodo]);
+    setTodos((prev) => {
+      const newTodos = [...prev, newTodo]
+      storage.save(STORAGE_TODOS_KEY, newTodos)
+      return newTodos;
+      });
+
   };
 
   const onToggleTodo = (id) => {
@@ -39,6 +30,7 @@ export const App = () => {
     });
 
     setTodos(updatedTodos);
+    storage.save(STORAGE_TODOS_KEY, updatedTodos)
   };
 
   const onToggleFavorite = (id) => {
@@ -47,11 +39,14 @@ export const App = () => {
     });
 
     setTodos(updatedTodos);
+    storage.save(STORAGE_TODOS_KEY, updatedTodos)
   };
 
   const onDeleteTodo = (id) => {
     const filtered = todos.filter((todo) => todo.id !== id);
     setTodos(filtered);
+    storage.save(STORAGE_TODOS_KEY, filtered)
+
   };
 
   return (
