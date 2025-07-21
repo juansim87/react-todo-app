@@ -6,6 +6,7 @@ import { TodoForm } from "./components/TodoForm/TodoForm";
 import { TodoList } from "./components/TodoList/TodoList";
 import { Favorites } from "./components/Favorites/Favorites";
 import { storage } from "./helpers/storage";
+import { Footer } from "./components/Footer/Footer";
 
 const STORAGE_TODOS_KEY = "todos";
 
@@ -17,11 +18,10 @@ export const App = () => {
 
   const addTodo = (newTodo) => {
     setTodos((prev) => {
-      const newTodos = [...prev, newTodo]
-      storage.save(STORAGE_TODOS_KEY, newTodos)
+      const newTodos = [...prev, newTodo];
+      storage.save(STORAGE_TODOS_KEY, newTodos);
       return newTodos;
-      });
-
+    });
   };
 
   const onToggleTodo = (id) => {
@@ -30,7 +30,7 @@ export const App = () => {
     });
 
     setTodos(updatedTodos);
-    storage.save(STORAGE_TODOS_KEY, updatedTodos)
+    storage.save(STORAGE_TODOS_KEY, updatedTodos);
   };
 
   const onToggleFavorite = (id) => {
@@ -39,14 +39,21 @@ export const App = () => {
     });
 
     setTodos(updatedTodos);
-    storage.save(STORAGE_TODOS_KEY, updatedTodos)
+    storage.save(STORAGE_TODOS_KEY, updatedTodos);
   };
 
   const onDeleteTodo = (id) => {
     const filtered = todos.filter((todo) => todo.id !== id);
     setTodos(filtered);
-    storage.save(STORAGE_TODOS_KEY, filtered)
+    storage.save(STORAGE_TODOS_KEY, filtered);
+  };
 
+  const onResetButton = () => {
+    const resetTodos = todos.map((todo) => {
+      return { ...todo, completed: false, favorite: false, done: false };
+    });
+    setTodos(resetTodos);
+    storage.save(STORAGE_TODOS_KEY, resetTodos);
   };
 
   return (
@@ -73,6 +80,7 @@ export const App = () => {
       )}
 
       {activeTab === Tabs.NEW_TODO && <TodoForm addTodo={addTodo} />}
+      <Footer onResetButton={onResetButton} />
     </div>
   );
 };
