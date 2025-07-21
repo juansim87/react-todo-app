@@ -10,7 +10,6 @@ export const TodoForm = ({ addTodo }) => {
     event.preventDefault();
 
     if (!form.todoText) {
-      console.log("Rellena el campo de texto!");
       return;
     }
 
@@ -22,7 +21,6 @@ export const TodoForm = ({ addTodo }) => {
       done: false,
     };
 
-    console.log("Formulario enviado", newTodo);
     addTodo(newTodo);
     setForm(INITIAL_FORM_STATE);
   };
