@@ -5,8 +5,6 @@ import { TodoItem } from "../TodoItem/TodoItem.jsx"
 export const Favorites = ({ todos, onToggleTodo, onToggleFavorite, onDeleteTodo }) => {
   const favorites = todos.filter((todo) => todo.favorite);
 
-console.log("Favoritos:", favorites);
-
   return (
     <div className="favorites-container">
       <h2 className="favorites-title">⭐ Favoritos</h2>

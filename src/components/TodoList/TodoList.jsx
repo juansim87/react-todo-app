@@ -3,7 +3,6 @@ import { TodoItem } from "../TodoItem/TodoItem";
 import "./TodoList.css";
 
 export const TodoList = (props) => {
-  console.log(props);
   return (
     <div className="todo-list-container">
       <h2 className="todo-list-title">📋Todas las tareas</h2>
