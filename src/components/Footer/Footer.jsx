@@ -4,7 +4,7 @@ export const Footer = ({ onResetButton }) => {
 
 
   return (
-    <div>
+    <div className='footer'>
       <button className='reset-button' onClick={()=> onResetButton()}>Resetear tareas</button>
     </div>
   );
