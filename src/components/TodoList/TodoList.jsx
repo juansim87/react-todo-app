@@ -9,17 +9,21 @@ export const TodoList = (props) => {
       {!props?.todos.length && (
         <p className="todo-list-empty">No hay tareas que mostrar</p>
       )}
-      {props?.todos?.map((todo) => {
-        return (
-          <TodoItem
-            key={todo.id}
-            todo={todo}
-            onToggleTodo={props.onToggleTodo}
-            onDeleteTodo={props.onDeleteTodo}
-            onToggleFavorite={props.onToggleFavorite}
-          />
-        );
-      })}
+      {props?.todos?.length && (
+        <div className="todo-item-list">
+          {props.todos.map((todo) => {
+            return (
+              <TodoItem
+                key={todo.id}
+                todo={todo}
+                onToggleTodo={props.onToggleTodo}
+                onDeleteTodo={props.onDeleteTodo}
+                onToggleFavorite={props.onToggleFavorite}
+              />
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };

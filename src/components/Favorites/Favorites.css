@@ -18,5 +18,10 @@
 .favorites-list {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+}
+
+@media (max-width: 480px) {
+    .favorites-title {
+        font-size: 18px;
+    }
 }

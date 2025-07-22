@@ -23,3 +23,10 @@
   background-color: #61dafb;
   color: black;
 }
+
+@media (max-width: 480px) {
+  .tab {
+    padding: 3px 6px;
+    font-size: 14px;
+  }
+}
