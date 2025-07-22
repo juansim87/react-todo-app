@@ -60,5 +60,8 @@ button:hover {
 @media (max-width: 480px) {
   .todo-text {
     font-size: 14px;
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+    overflow: hidden; /* Oculta el texto que desborda */
+    text-overflow: ellipsis;
   }
 }
