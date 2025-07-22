@@ -2,6 +2,11 @@
     margin-bottom: 2rem;
 }
 
+.todo-item-list {
+    display: flex;
+    flex-direction: column;
+}
+
 .todo-list-title {
     font-size: 22px;
     margin-bottom: 1rem;
