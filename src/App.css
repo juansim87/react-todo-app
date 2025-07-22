@@ -39,6 +39,10 @@ button {
 
 
 @media (max-width: 480px) {
+.app-container {
+    min-height: 100vh;
+}
+
     .app-title {
         font-size: 24px;
         margin-bottom: 1rem;
