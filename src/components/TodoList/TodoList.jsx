@@ -6,10 +6,10 @@ export const TodoList = (props) => {
   return (
     <div className="todo-list-container">
       <h2 className="todo-list-title">📋Todas las tareas</h2>
-      {!props?.todos.length && (
+      {props?.todos.length === 0 && (
         <p className="todo-list-empty">No hay tareas que mostrar</p>
       )}
-      {props?.todos?.length && (
+      {props.todos.length > 0  && (
         <div className="todo-item-list">
           {props.todos.map((todo) => {
             return (
