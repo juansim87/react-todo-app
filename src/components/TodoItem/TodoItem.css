@@ -56,3 +56,9 @@ button:hover {
 .delete-btn {
   color: crimson;
 }
+
+@media (max-width: 480px) {
+  .todo-text {
+    font-size: 14px;
+  }
+}

@@ -17,3 +17,12 @@
 .reset-button:hover {
   background-color: #c82333;
 }
+
+@media (max-width: 480px) {
+  
+  .reset-button {
+  padding: 7px 14px;
+  font-size: 16px;
+  }
+
+}

@@ -62,25 +62,30 @@ export const App = () => {
       <h1 className="app-title">📝Mi Lista de tareas</h1>
 
       {activeTab === Tabs.TODOS && (
-        <TodoList
-          todos={todos}
-          onToggleTodo={onToggleTodo}
-          onDeleteTodo={onDeleteTodo}
-          onToggleFavorite={onToggleFavorite}
-        />
+        <>
+          <TodoList
+            todos={todos}
+            onToggleTodo={onToggleTodo}
+            onDeleteTodo={onDeleteTodo}
+            onToggleFavorite={onToggleFavorite}
+          />
+          <Footer onResetButton={onResetButton} />
+        </>
       )}
 
       {activeTab === Tabs.FAVORITES && (
-        <Favorites
-          todos={todos}
-          onToggleTodo={onToggleTodo}
-          onDeleteTodo={onDeleteTodo}
-          onToggleFavorite={onToggleFavorite}
-        />
+        <>
+          <Favorites
+            todos={todos}
+            onToggleTodo={onToggleTodo}
+            onDeleteTodo={onDeleteTodo}
+            onToggleFavorite={onToggleFavorite}
+          />
+          <Footer onResetButton={onResetButton} />
+        </>
       )}
 
       {activeTab === Tabs.NEW_TODO && <TodoForm addTodo={addTodo} />}
-      <Footer onResetButton={onResetButton} />
     </div>
   );
 };
